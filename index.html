@@ -1,0 +1,25 @@
+<!DOCTYPE html >
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Task</label>
+        <input ng-model="task" type="text" class="form-control" placeholder="Enter Task Here">
+    </div>
+
+    <h1>{{ task }}</h1>
+
+
+</div>
+</body>
+
+<script src="bower_components/angular/angular.min.js"></script>
+</html>
