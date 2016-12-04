@@ -8,16 +8,15 @@ var myApp = angular.module('todoListApp',[]);
 
 myApp.controller('mainCtrl', ['$scope', function($scope) {
 $scope.todos = [
-    {"name" :"angularjs coues"},
-    {"name" : "rails coues"},
-    {"name" : "tie website"},
-    {"name" : "lacreationarts website"},
-    {"name" : "Kimai web application"},
+    {"title" :"angularjs coues"},
+    {"title" : "rails coues"},
+    {"title" : "tie website"},
+    {"title" : "lacreationarts website"},
+    {"title" : "Kimai web application"},
 
 ];
     $scope.todo ={};
     // $scope.editlabel ="Edit";
-    $scope.todo.name = 'a simple todo!';
     //
     // if ($scope.editing =true){
     // $scope.editlabel ="Save";
@@ -38,7 +37,8 @@ $scope.todos = [
         //
         // }
 
-        console.log('edittodo');
+        // console.log('edittodo');
+
     };
 
     $scope.deleteTodo = function () {
@@ -47,11 +47,6 @@ $scope.todos = [
 
 }]);
 
-myApp.controller('newCtrl', ['$scope', function($scope) {
-    $scope.whoIAm = function () {
-        console.log('Iam a newCtrl');
-    }
-}]);
 
 
 
