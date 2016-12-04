@@ -36,7 +36,7 @@ http://bootsnipp.com/snippets/featured/todo-example
                     <li class="ui-state-default">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox">
+                                <input type="checkbox" ng-model="completed">
                                 <span ng-hide="editing">{{todo.title}}</span>
                               <input type="text" ng-show="editing" ng-model="todo.title" name="name" id="inputID" class="form-control" value="{{todo.title}}" title="" required="required" >
                             </label>
