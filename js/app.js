@@ -28,16 +28,18 @@ $scope.todos = [
 
 
     $scope.saveTodo = function () {
-    } ;
+        console.log('saveTodo');
+    } ;  
+    
 
     $scope.editTodo = function () {
+        console.log('edittodo');
         //
         // if ($scope.todo.editing  == true) {
         // $scope.todo.editing = false;
         //
         // }
 
-        // console.log('edittodo');
 
     };
 
