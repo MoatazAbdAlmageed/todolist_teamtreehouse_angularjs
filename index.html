@@ -11,8 +11,11 @@ http://bootsnipp.com/snippets/featured/todo-example
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 <style>
-    .editing_item edited:after{
-        content: 'edited';
+     .edited label:after{
+         content: " - Edited";
+         background-color: yellow;
+         color: red;
+         font-weight: bold;
     }
 
 </style>
@@ -37,15 +40,13 @@ http://bootsnipp.com/snippets/featured/todo-example
                 <button id="checkAll" class="btn btn-success">Mark all as done</button>
 
                 <hr class="dl-horizontal">
-                <ul id="sortable" class="list-unstyled"   ng-repeat="todo in todos" ng-class="{'editing_item': todo.editing,'edited':todo.edited}">
-
-
+                <ul id="sortable" class="list-unstyled"   ng-repeat="todo in todos" ng-class="{'editing_item': editing,'edited':todo.edited}">
                     <li class="ui-state-default">
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" ng-model="completed">
-                                <span ng-hide="todo.editing">{{todo.title}}</span>
-                              <input type="text" ng-change="editTodo()" ng-show="todo.editing" ng-blur="todo.editing=false;" ng-model="todo.title" name="name" id="inputID" class="form-control" value="{{todo.title}}" required="required" >
+                                <span ng-hide="editing">{{todo.title}}</span>
+                              <input type="text" ng-change="todo.edited = true" ng-show="editing" ng-blur="editing=false;" ng-model="todo.title" name="name" id="inputID" class="form-control" value="{{todo.title}}" required="required" >
                             </label>
 
                         </div>
@@ -53,7 +54,7 @@ http://bootsnipp.com/snippets/featured/todo-example
                         <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group">
                         <a type="button" class="btn btn-xs btn-success" ng-click="saveTodo()">Save</a>
-                        <a type="button" class="btn btn-xs btn-primary" ng-click="todo.editing = !todo.editing">Edit</a>
+                        <a type="button" class="btn btn-xs btn-primary" ng-click="editing = !editing">Edit</a>
                         <a type="button" class="btn btn-xs btn-danger" ng-click="deleteTodo()">Delete</a>
                         </div>
                         </div>

@@ -33,18 +33,19 @@ $scope.todos = [
     
 
     $scope.editTodo = function () {
-        console.log('edittodo');
+
+        console.log('edittodo please');
+
         //
         // if ($scope.todo.editing  == true) {
         // $scope.todo.editing = false;
         //
         // }
 
-
     };
 
     $scope.deleteTodo = function () {
-        console.log('deletetodo');
+        console.log('deleteTodo');
     };
 
 }]);
