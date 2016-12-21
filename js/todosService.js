@@ -3,43 +3,50 @@
  */
 
 
-myApp.service('todosService',function ($http) {
+myApp.service('todosService', function ($http) {
 
+
+
+    // ################################################ Create
+    this.createTodo = function () {
+        console.log('createTodo');
+    };
+
+
+    // ################################################ Read
     this.getTodos = function (callback) {
         $http.get('data/todos.json').then(callback)
     }
 
+
+    // ################################################ Update
+    this.editTodo = function () {
+
+        console.log('edittodo please');
+
+        //
+        // if (this.todo.editing  == true) {
+        // this.todo.editing = false;
+        //
+        // }
+
+    };
+
+
+    // ################################################ Delete
+    this.deleteTodo = function (todo) {
+        // ################################################### Notification
+
+        Notification.success({
+            message: 'todo ' + todo + " deleted",
+            positionY: 'bottom',
+            positionX: 'right'
+        });
+
+    };
+
+
 });
-
-
-        // $http.get('/data/todos.json').then(function(response) {
-        //     var data = response.data,
-        //         status = response.status,
-        //         header = response.header,
-        //         config = response.config;
-        // return data;
-        //     // success handler
-        // }, function(response) {
-        //     var data = response.data,
-        //         status = response.status,
-        //         header = response.header,
-        //         config = response.config;
-        //     // error handler
-        // });
-        
-        
-        // $http.get('data/todos.json')
-        //     .then(function (response) {
-        //         // console.log(response.data);
-        //         // return typeof (response.data);
-        //         return response;
-        //         // this callback will be called asynchronously
-        //         // when the response is available
-        //     }, function (response) {
-        //         // called asynchronously if an error occurs
-        //         // or server returns response with an error status.
-        //     });
-    // };
 
 
 

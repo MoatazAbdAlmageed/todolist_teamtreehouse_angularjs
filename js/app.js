@@ -3,7 +3,7 @@
  */
 
 
-var myApp = angular.module('todoListApp',[]);
+var myApp = angular.module('todoListApp',['ui-notification']);
 
 
 

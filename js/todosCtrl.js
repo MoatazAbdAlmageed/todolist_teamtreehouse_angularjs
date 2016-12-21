@@ -3,30 +3,43 @@
  */
 
 
-myApp.controller('todosCtrl', ['$scope','todosService', function($scope,todosService) {
+myApp.controller('todosCtrl', ['$scope', 'todosService','Notification', function ($scope, todosService,Notification) {
 
 
 
-    // ################################################ Create
+    // ################################################ Save
     $scope.saveTodo = function () {
-        console.log('saveTodo');
-    } ;
+
+        Notification.success({
+            message: 'Save',
+            positionY: 'bottom',
+            positionX: 'right'
+        });
+
+
+
+    };
 
 
     // ################################################ Read
     todosService.getTodos(function (response) {
+
         console.log(response.data);
         $scope.todos = response.data;
 
     });
-    // console.log(todosService.getTodos());
-
 
 
     // ################################################ Update
     $scope.editTodo = function () {
 
-        console.log('edittodo please');
+
+        Notification.success({
+            message: 'Update',
+            positionY: 'bottom',
+            positionX: 'right'
+        });
+
 
         //
         // if ($scope.todo.editing  == true) {
@@ -38,11 +51,19 @@ myApp.controller('todosCtrl', ['$scope','todosService', function($scope,todosSer
 
 
     // ################################################ Delete
-    $scope.deleteTodo = function () {
-        console.log('deleteTodo');
+    $scope.deleteTodo = function (todo) {
+
+        if ($scope.todos.splice(todo, 1)) {
+
+            Notification.success({
+                message: 'todo ' + todo + " deleted",
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+
+        }
+
     };
-
-
 
 
 }]);
