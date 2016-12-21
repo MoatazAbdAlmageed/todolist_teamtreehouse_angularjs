@@ -7,10 +7,15 @@ myApp.service('todosService', function ($http) {
 
 
 
-    // ################################################ Create
-    this.createTodo = function () {
-        console.log('createTodo');
+    // ################################################ save
+
+    this.saveTodo = function (todo) {
+        // save todo_with $index from backend
+        console.log(todo);
+        return false;
+
     };
+
 
 
     // ################################################ Read
@@ -34,14 +39,10 @@ myApp.service('todosService', function ($http) {
 
 
     // ################################################ Delete
-    this.deleteTodo = function (todo) {
-        // ################################################### Notification
-
-        Notification.success({
-            message: 'todo ' + todo + " deleted",
-            positionY: 'bottom',
-            positionX: 'right'
-        });
+    this.deleteTodo = function ($index) {
+        // delete todo_with $index from backend
+        console.log($index);
+        return true;
 
     };
 

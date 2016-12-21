@@ -5,7 +5,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/js/app.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/todosCtrl.js" afterPath="$PROJECT_DIR$/js/todosCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/todosService.js" afterPath="$PROJECT_DIR$/js/todosService.js" />
     </list>
@@ -38,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todosService.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="todosService.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/todosService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="21" column="41" lean-forward="true" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
@@ -53,18 +52,18 @@
       <file leaf-file-name="todosCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/todosCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="62" />
+            <state relative-caret-position="140">
+              <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="185">
-              <caret line="55" column="98" lean-forward="false" selection-start-line="55" selection-start-column="94" selection-end-line="55" selection-end-column="98" />
+              <caret line="55" column="95" lean-forward="false" selection-start-line="55" selection-start-column="91" selection-end-line="55" selection-end-column="95" />
               <folding />
             </state>
           </provider>
@@ -105,6 +104,7 @@
       <find>deleteTodo</find>
       <find>getTodos</find>
       <find>saveTodo</find>
+      <find>Notification</find>
       <find>save</find>
     </findStrings>
     <replaceStrings>
@@ -129,9 +129,9 @@
         <option value="$PROJECT_DIR$/js/dataService.js" />
         <option value="$PROJECT_DIR$/js/mainCtrl.js" />
         <option value="$PROJECT_DIR$/js/app.js" />
-        <option value="$PROJECT_DIR$/js/todosService.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/todosCtrl.js" />
+        <option value="$PROJECT_DIR$/js/todosService.js" />
       </list>
     </option>
   </component>
@@ -364,12 +364,12 @@
       <workItem from="1482212882108" duration="3000" />
       <workItem from="1482219042777" duration="5731000" />
       <workItem from="1482306939790" duration="1794000" />
-      <workItem from="1482328914982" duration="1491000" />
+      <workItem from="1482328914982" duration="3075000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43895000" />
+    <option name="totallyTimeSpent" value="45479000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="743" extended-state="0" />
@@ -704,29 +704,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/todosService.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="185">
+          <caret line="55" column="95" lean-forward="false" selection-start-line="55" selection-start-column="91" selection-end-line="55" selection-end-column="95" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/todosCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="62" />
+        <state relative-caret-position="140">
+          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/todosService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="55" column="98" lean-forward="false" selection-start-line="55" selection-start-column="94" selection-end-line="55" selection-end-column="98" />
-          <folding />
+        <state relative-caret-position="324">
+          <caret line="21" column="41" lean-forward="true" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -3,23 +3,33 @@
  */
 
 
-myApp.controller('todosCtrl', ['$scope', 'todosService','Notification', function ($scope, todosService,Notification) {
+myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', function ($scope, todosService, Notification) {
 
 
 
     // ################################################ Save
-    $scope.saveTodo = function () {
 
-        Notification.success({
-            message: 'Save',
-            positionY: 'bottom',
-            positionX: 'right'
-        });
+    $scope.saveTodo = function (todo) {
 
 
+        if (todosService.saveTodo(todo)) {
+
+            Notification.success({
+                message: '<b>' + todo.title + '</b> saveed successfully ',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+
+        }
+        else {
+            Notification.error({
+                message: 'error occurred during saving <b>' + todo.title + '</b>',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+        }
 
     };
-
 
     // ################################################ Read
     todosService.getTodos(function (response) {
@@ -51,16 +61,24 @@ myApp.controller('todosCtrl', ['$scope', 'todosService','Notification', function
 
 
     // ################################################ Delete
-    $scope.deleteTodo = function (todo) {
+    $scope.deleteTodo = function (index, todo) {
 
-        if ($scope.todos.splice(todo, 1)) {
+
+        if (todosService.deleteTodo(index)) {
 
             Notification.success({
-                message: 'todo ' + todo + " deleted",
+                message: '<b>' + todo + '</b> deleted successfully ',
                 positionY: 'bottom',
                 positionX: 'right'
             });
 
+        }
+        else {
+            Notification.error({
+                message: 'error occurred during deleting tod',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
         }
 
     };

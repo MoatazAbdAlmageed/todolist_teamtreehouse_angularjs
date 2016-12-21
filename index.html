@@ -53,9 +53,9 @@ http://bootsnipp.com/snippets/featured/todo-example
 
                         <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group">
-                        <a type="button" class="btn btn-xs btn-success" ng-click="saveTodo()">Save</a>
+                        <a type="button" class="btn btn-xs btn-success" ng-click="saveTodo(todo)">Save</a>
                         <a type="button" class="btn btn-xs btn-primary" ng-click="editing = !editing">Edit</a>
-                        <a type="button" class="btn btn-xs btn-danger" ng-click="deleteTodo(todo.title)">Delete</a>
+                        <a type="button" class="btn btn-xs btn-danger" ng-click="deleteTodo($index,todo.title)">Delete</a>
                         </div>
                         </div>
 
