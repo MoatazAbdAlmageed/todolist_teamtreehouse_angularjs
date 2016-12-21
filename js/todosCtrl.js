@@ -16,7 +16,7 @@ myApp.controller('todosCtrl', ['$scope','todosService', function($scope,todosSer
     // ################################################ Read
     todosService.getTodos(function (response) {
         console.log(response.data);
-        $scope.todos =response.data;
+        $scope.todos = response.data;
 
     });
     // console.log(todosService.getTodos());

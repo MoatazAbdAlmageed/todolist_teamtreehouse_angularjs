@@ -6,7 +6,7 @@
 myApp.service('todosService',function ($http) {
 
     this.getTodos = function (callback) {
-        $http.get('/data/todos.json').then(callback)
+        $http.get('data/todos.json').then(callback)
     }
 
 });
