@@ -7,15 +7,29 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
 
 
 
-    // ################################################ Save
+    // ################################################ get todos
+    todosService.getTodos(function (response) {
+        console.log(response.data);
+        $scope.todos = response.data;
 
-    $scope.saveTodo = function (todo) {
 
 
-        if (todosService.saveTodo(todo)) {
+    });
+
+
+
+
+    // ################################################ create new todo
+
+    $scope.createTodo = function (todo) {
+
+        //
+        if (todosService.createTodo(todo)) {
+
+            $scope.todos.push(todo);
 
             Notification.success({
-                message: '<b>' + todo.title + '</b> saveed successfully ',
+                message: '<b>' + todo.title + '</b> created successfully ',
                 positionY: 'bottom',
                 positionX: 'right'
             });
@@ -31,13 +45,39 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
 
     };
 
-    // ################################################ Read
-    todosService.getTodos(function (response) {
 
-        console.log(response.data);
-        $scope.todos = response.data;
 
-    });
+
+
+
+    // ################################################ Save
+
+    $scope.saveTodo = function (index, todo) {
+
+
+        if (todosService.saveTodo(index)) {
+
+
+
+
+
+
+            Notification.success({
+                message: '<b>' + todo + '</b> saved successfully ',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+
+        }
+        else {
+            Notification.error({
+                message: 'error occurred during saving <b>' + todo + '</b>',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+        }
+
+    };
 
 
     // ################################################ Update
@@ -63,6 +103,8 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
     // ################################################ Delete
     $scope.deleteTodo = function (index, todo) {
 
+
+        $scope.todos.splice(index, 1);
 
         if (todosService.deleteTodo(index)) {
 

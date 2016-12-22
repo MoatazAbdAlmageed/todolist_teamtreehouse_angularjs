@@ -9,9 +9,9 @@ myApp.service('todosService', function ($http) {
 
     // ################################################ save
 
-    this.saveTodo = function (todo) {
+    this.saveTodo = function (index) {
         // save todo_with $index from backend
-        console.log(todo);
+        console.log(index);
         return false;
 
     };
@@ -23,6 +23,14 @@ myApp.service('todosService', function ($http) {
         $http.get('data/todos.json').then(callback)
     }
 
+
+    // ################################################ create
+    this.deleteTodo = function ($index) {
+        // delete todo_with $index from backend
+        console.log($index);
+        return true;
+
+    };
 
     // ################################################ Update
     this.editTodo = function () {
@@ -42,6 +50,15 @@ myApp.service('todosService', function ($http) {
     this.deleteTodo = function ($index) {
         // delete todo_with $index from backend
         console.log($index);
+        return true;
+
+    };
+
+
+    // ################################################ createTodo
+    this.createTodo = function (todo) {
+        // ask back-end to insert new todo into Database
+        console.log(todo);
         return true;
 
     };

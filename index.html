@@ -36,11 +36,11 @@ http://bootsnipp.com/snippets/featured/todo-example
         <div class="col-md-6">
             <div class="todolist not-done">
                 <h1>Todos</h1>
-                <input type="text" class="form-control add-todo" placeholder="Add todo"   >
-                <button id="checkAll" class="btn btn-success">Mark all as done</button>
+                <input type="text"   ng-model="todo.title" class="form-control add-todo" placeholder="create todo"  >
+                <button ng-click="createTodo(todo)" id="createTodo" class="btn btn-success">Create</button>
 
                 <hr class="dl-horizontal">
-                <ul id="sortable" class="list-unstyled"   ng-repeat="todo in todos" ng-class="{'editing_item': editing,'edited':todo.edited}">
+                <ul id="sortable" class="list-unstyled"   ng-repeat="todo in todos track by $index" ng-class="{'editing_item': editing,'edited':todo.edited}">
                     <li class="ui-state-default">
                         <div class="checkbox">
                             <label>
@@ -51,9 +51,11 @@ http://bootsnipp.com/snippets/featured/todo-example
 
                         </div>
 
+
+
                         <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group">
-                        <a type="button" class="btn btn-xs btn-success" ng-click="saveTodo(todo)">Save</a>
+                        <a type="button" class="btn btn-xs btn-success" ng-click="saveTodo($index,todo.title)">Save</a>
                         <a type="button" class="btn btn-xs btn-primary" ng-click="editing = !editing">Edit</a>
                         <a type="button" class="btn btn-xs btn-danger" ng-click="deleteTodo($index,todo.title)">Delete</a>
                         </div>
