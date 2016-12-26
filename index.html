@@ -6,17 +6,17 @@ http://bootsnipp.com/snippets/featured/todo-example
 <html lang="en" ng-app="todoListApp">
 <head>
     <meta charset="UTF-8">
-    <title>To-Do List Manager</title>
+    <title>Let's do it! </title>
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css">
 </head>
 <style>
-     .edited label:after{
-         content: " - Edited";
-         background-color: yellow;
-         color: red;
-         font-weight: bold;
+    .edited label:after {
+        content: " - Edited";
+        background-color: yellow;
+        color: red;
+        font-weight: bold;
     }
 
 </style>
@@ -24,160 +24,63 @@ http://bootsnipp.com/snippets/featured/todo-example
 
 <div class="container" ng-controller="todosCtrl">
 
-        <div class="jumbotron">
-	<div class="container">
-		<h1>To-Do List Manager</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur commodi cumque fuga? Hic, itaque neque. Accusantium error eum harum, illum in incidunt ipsa ipsum necessitatibus nobis quaerat repudiandae voluptate!</p>
-	</div>
-    </div>
-
+    <h1>Let's do it! </h1>
 
     <div class="row">
         <div class="col-md-6">
-            <div class="todolist not-done">
-                <h1>Todos</h1>
-                <input type="text"   ng-model="todo.title" class="form-control add-todo" placeholder="create todo"  >
-                <button ng-click="createTodo(todo)" id="createTodo" class="btn btn-success">Create</button>
-
-                <hr class="dl-horizontal">
-                <ul id="sortable" class="list-unstyled"   ng-repeat="todo in todos track by $index" ng-class="{'editing_item': editing,'edited':todo.edited}">
-                    <li class="ui-state-default">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" ng-model="completed">
-                                <span ng-hide="editing">{{todo.title}}</span>
-                              <input type="text" ng-change="todo.edited = true" ng-show="editing" ng-blur="editing=false;" ng-model="todo.title" name="name" id="inputID" class="form-control" value="{{todo.title}}" required="required" >
-                            </label>
-
-                        </div>
-
-
-
-                        <div class="btn-toolbar" role="toolbar">
-                        <div class="btn-group">
-                        <a type="button" class="btn btn-xs btn-success" ng-click="saveTodo($index,todo.title)">Save</a>
-                        <a type="button" class="btn btn-xs btn-primary" ng-click="editing = !editing">Edit</a>
-                        <a type="button" class="btn btn-xs btn-danger" ng-click="deleteTodo($index,todo.title)">Delete</a>
-                        </div>
-                        </div>
-
-
-                    </li>
-                </ul>
-                <div class="todo-footer">
-                    <strong><span class="count-todos"></span></strong>  <span class="badge"> {{todos.length }}</span>Items Left
-                </div>
+            <div class="input-group">
+                <input type="text" ng-model="new_todo" class="form-control" placeholder="Add a task...">
+                <span class="input-group-btn">
+        <button ng-click="createTodo(new_todo)" ng-class="{disabled:new_todo==null}" class="btn btn-success "
+                type="button">Create!</button>
+      </span>
             </div>
         </div>
 
 
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="todolist">
+                <h3>Incomplete</h3>
+
+                <div class="alert alert-success" ng-show="!!!todos.length">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>{{randomQuote.msg}}</strong> you did all tasks
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="todo in todos track by $index">{{todo.title}}
+                        <div class="btn-group" style="float: right;">
+                            <a type="button" class="btn btn-xs btn-success"
+                               ng-click="doneTodo($index,todo)">Done</a>
+                            <a type="button" class="btn btn-xs btn-primary" ng-click="editing = !editing">Edit</a>
+                            <a type="button" class="btn btn-xs btn-danger" ng-click="deleteTodo($index,todo.title)">Delete</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
 
 
         <div class="col-md-6">
             <div class="todolist">
-                <h1>Already Done</h1>
-                <ul id="done-items" class="list-unstyled">
-                    <li>Some item <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>
+                <h3>Completed</h3>
 
+
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="done_todo in done_todos track by $index">{{done_todo.title}}
+
+                        <button class="remove-item btn btn-default btn-xs pull-right"><span
+                                class="glyphicon glyphicon-remove"></span></button>
+                    </li>
                 </ul>
+
+
             </div>
         </div>
     </div>
 
-
-    <!--<div class="row">-->
-
-    <!--<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="border-right: 1px solid darkred">-->
-
-
-        <!--<div class="form-group">-->
-            <!--<label for="newTodo" class="col-sm-2" >New Todo:</label>-->
-            <!--<div class="col-sm-10">-->
-                <!--<input type="text" name="newTodo" id="newTodo" class="form-control" value="" title="" required="required" >-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-
-
-
-
-            <!--<div class="list form-group" ng-repeat="todo in todos">-->
-                <!--<input class="completed" type="checkbox" value="" id="" ng-model="todo.completed">-->
-                <!--<label for="todo_text" class="col-sm-2 control-label" ng-hide="editing">{{todo.name}} - {{todo.completed}}</label>-->
-
-                <!--<input type="text" ng-model="todo.name" name="name" id="todo_text" class="form-control editing_label" placeholder="{{todo.name}}" required="required" ng-show="editing">-->
-
-                <!--<div class="btn-toolbar" role="toolbar">-->
-                    <!--<div class="btn-group">-->
-                        <!--<a type="button" class="btn btn-default" ng-click="saveTodo()">Save</a>-->
-                        <!--<a type="button" class="btn btn-default" ng-click="editing = !editing">Edit</a>-->
-                        <!--<a type="button" class="btn btn-default" ng-click="deleteTodo()">Delete</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-
-            <!--</div ng-repeat="todo in todos">-->
-            <!--&lt;!&ndash;<div class="actions" >&ndash;&gt;-->
-            <!--&lt;!&ndash;<a href="" class="btn " ng-click="saveTodo()">Save</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;<a href="" class="btn " ng-click="editing = !editing">Edit</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;<a href="" class="btn  delete" ng-click="deleteTodo()">Delete</a>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;&lt;!&ndash;&ndash;&gt;-->
-            <!--&lt;!&ndash;Edit&ndash;&gt;-->
-            <!--&lt;!&ndash;Save&ndash;&gt;-->
-            <!--&lt;!&ndash;Delete&ndash;&gt;-->
-            <!--&lt;!&ndash;&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;<hr>&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;<h1>Todos</h1>&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;<ol class="list-group" ng-repeat="todo in todos">&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;<li class="list-group-item">{{todo.name}}</li>&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash;</ol>&ndash;&gt;&ndash;&gt;-->
-
-            <!--&lt;!&ndash;&lt;!&ndash;{{todos | json}}&ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<div class="form-group" >&ndash;&gt;-->
-        <!--&lt;!&ndash;<label for="exampleInputEmail1">todo</label>&ndash;&gt;-->
-        <!--&lt;!&ndash;<input ng-model="todo" type="text" class="form-control" placeholder="Enter todo Here">&ndash;&gt;-->
-        <!--&lt;!&ndash;<h1>{{ todo }}</h1>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-
-
-
-        <!--&lt;!&ndash;&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash;E for Element name&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;<w3-test-directive></w3-test-directive>&ndash;&gt;-->
-
-        <!--&lt;!&ndash;&lt;!&ndash;A for Attribute&ndash;&gt;&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<h1 w3-test-directive></h1>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p w3-test-directive></p>&ndash;&gt;-->
-
-        <!--&lt;!&ndash;&lt;!&ndash;C for Class&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;<p class="w3-test-directive"></p>&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash;M for Comment&ndash;&gt;&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<div class="jumbotron">&ndash;&gt;-->
-        <!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
-        <!--&lt;!&ndash;<h1 w3-test-directive></h1>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p>Contents...</p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a class="btn btn-primary btn-lg">Learn more</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;</p>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-
-    <!--</div>-->
-
-
-        <!--<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">-->
-            <!--<h1>Already Done</h1>-->
-        <!--</div>-->
-
-<!--</div>-->
 
 </div>
 </body>

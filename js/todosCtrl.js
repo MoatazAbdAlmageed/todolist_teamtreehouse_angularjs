@@ -6,28 +6,56 @@
 myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', function ($scope, todosService, Notification) {
 
 
+    $scope.done_todos = [
+
+        {"title": "visit my uncle"},
+    ];
+
+
+    $scope.successMessages = [
+        {msg: 'Awesome'},
+        {msg: 'Your sincere efforts..'},
+        {msg: 'Well Done..'},
+        {msg: 'Greate'},
+        {msg: 'Congrats !!'},
+        {msg: 'You deserve it ..'},
+        {msg: 'Congratulations'},
+        {msg: 'Well done'},
+        {msg: 'You did it'},
+    ];
+
+    $scope.randomQuote = $scope.successMessages[Math.floor(Math.random() * $scope.successMessages.length)];
+
 
     // ################################################ get todos
     todosService.getTodos(function (response) {
-        console.log(response.data);
         $scope.todos = response.data;
-
 
 
     });
 
 
-
-
     // ################################################ create new todo
 
     $scope.createTodo = function (todo) {
+        if (todo == null) {
+            Notification.error({
+                message: 'Please write todo first',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+        }
+        else {
+            // re call randomQuote to get new randomQuote
+            $scope.randomQuote = $scope.successMessages[Math.floor(Math.random() * $scope.successMessages.length)];
 
-        //
-        if (todosService.createTodo(todo)) {
-
+            var todo = {title: todo}
             $scope.todos.push(todo);
 
+
+            // empty new_todo input
+            //javascript - Clear text input on click with AngularJS - Stack Overflow
+            $scope.new_todo = null;
             Notification.success({
                 message: '<b>' + todo.title + '</b> created successfully ',
                 positionY: 'bottom',
@@ -35,35 +63,27 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
             });
 
         }
-        else {
-            Notification.error({
-                message: 'error occurred during saving <b>' + todo.title + '</b>',
-                positionY: 'bottom',
-                positionX: 'right'
-            });
-        }
+
 
     };
 
 
+    // ################################################ doneTodo
+
+    $scope.doneTodo = function (index, todo) {
 
 
+        if (todosService.doneTodo(index)) {
 
 
-    // ################################################ Save
+            //move todo to done todos
+            $scope.done_todos.push(todo);
 
-    $scope.saveTodo = function (index, todo) {
-
-
-        if (todosService.saveTodo(index)) {
-
-
-
-
+            $scope.todos.splice(index, 1);
 
 
             Notification.success({
-                message: '<b>' + todo + '</b> saved successfully ',
+                message: '<b>' + todo.title + '</b> done successfully ',
                 positionY: 'bottom',
                 positionX: 'right'
             });
@@ -71,7 +91,7 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
         }
         else {
             Notification.error({
-                message: 'error occurred during saving <b>' + todo + '</b>',
+                message: 'error occurred during moving <b>' + todo.title + '</b> to done',
                 positionY: 'bottom',
                 positionX: 'right'
             });
