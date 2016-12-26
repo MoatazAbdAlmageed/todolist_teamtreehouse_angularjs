@@ -1,7 +1,7 @@
+"use strict";
 /**
  * Created by Moataz on 12/20/16.
  */
-
 
 myApp.service('todosService', function ($http) {
 
@@ -17,12 +17,10 @@ myApp.service('todosService', function ($http) {
     };
 
 
-
     // ################################################ Read
     this.getTodos = function (callback) {
         $http.get('data/todos.json').then(callback)
     }
-
 
 
     // ################################################ Update
@@ -53,7 +51,15 @@ myApp.service('todosService', function ($http) {
         // ask back-end to insert new todo into Database
         // console.log(todo);
 
-        return true ;
+        return true;
+
+    };
+    // ################################################ moveToIncomplete
+    this.moveToIncomplete = function (index, todo) {
+        // ask back-end to insert new todo into Database
+        // console.log(todo);
+
+        return true;
 
     };
 

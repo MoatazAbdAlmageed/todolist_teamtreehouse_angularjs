@@ -46,7 +46,7 @@ http://bootsnipp.com/snippets/featured/todo-example
 
                 <div class="alert alert-success" ng-show="!!!todos.length">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <strong>{{randomQuote.msg}}</strong> you did all tasks
+                    <strong>{{randomQuote.msg}}</strong> you did all tasks :)
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="todo in todos track by $index">{{todo.title}}
@@ -68,10 +68,17 @@ http://bootsnipp.com/snippets/featured/todo-example
                 <h3>Completed</h3>
 
 
+                <div class="alert alert-danger" ng-show="!!!done_todos.length">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>{{randomDangerQuote.msg}}</strong> you have to work harder :(
+                </div>
+
+
+
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="done_todo in done_todos track by $index">{{done_todo.title}}
 
-                        <button class="remove-item btn btn-default btn-xs pull-right"><span
+                        <button   title="Move to Incomplete" ng-click="moveToIncomplete($index,done_todo)" class="remove-item btn btn-default btn-xs pull-right"><span
                                 class="glyphicon glyphicon-remove"></span></button>
                     </li>
                 </ul>

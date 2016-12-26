@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Created by Moataz on 12/20/16.
  */
@@ -24,7 +25,14 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
         {msg: 'You did it'},
     ];
 
+    $scope.dangerMessages = [
+        {msg: 'opps'},
+        {msg: 'bad'},
+        {msg: 'soory'},
+    ];
+
     $scope.randomQuote = $scope.successMessages[Math.floor(Math.random() * $scope.successMessages.length)];
+    $scope.randomDangerQuote = $scope.dangerMessages[Math.floor(Math.random() * $scope.dangerMessages.length)];
 
 
     // ################################################ get todos
@@ -83,7 +91,7 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
 
 
             Notification.success({
-                message: '<b>' + todo.title + '</b> done successfully ',
+                message: '<b>' + todo.title + '</b> completed successfully ',
                 positionY: 'bottom',
                 positionX: 'right'
             });
@@ -130,6 +138,35 @@ myApp.controller('todosCtrl', ['$scope', 'todosService', 'Notification', functio
 
             Notification.success({
                 message: '<b>' + todo + '</b> deleted successfully ',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+
+        }
+        else {
+            Notification.error({
+                message: 'error occurred during deleting tod',
+                positionY: 'bottom',
+                positionX: 'right'
+            });
+        }
+
+    };
+
+
+
+
+    // ################################################ moveToIncomplete
+    $scope.moveToIncomplete = function (index, todo) {
+
+
+        $scope.done_todos.splice(index, 1);
+        $scope.todos.push(todo);
+
+        if (todosService.moveToIncomplete(index)) {
+
+            Notification.success({
+                message: '<b>' + todo.title + '</b> Moved to Incomplete successfully ',
                 positionY: 'bottom',
                 positionX: 'right'
             });
